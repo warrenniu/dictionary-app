@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -16,7 +16,7 @@ function Header() {
                     </li>
                 </ul>
             </nav>
-                
+
         </div>
     )
 }

@@ -29,7 +29,6 @@ export function TotalProvider({ children }) {
 
 
     return (
-
         <StoreResponseContext.Provider value={storeResponse}>
             <FetchWordContext.Provider value={fetchHandler}>
                 {children}
