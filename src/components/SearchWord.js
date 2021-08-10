@@ -1,18 +1,26 @@
 import { useState } from 'react'
-import { useFetchHandler } from '../components/totalContext/TotalContext'
+import { useSetStoreResponse } from '../components/totalContext/TotalContext'
+
+
 function SearchWord() {
 
     const [word, setWord] = useState('')
-
+    const setStore = useSetStoreResponse()
     console.log(word)
     const changeHandler = (e) => {
         setWord(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        useFetchHandler(word)
-
+        try {
+            const data = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+            const json = await data.json()
+            console.log(json)
+            setStore(json)
+        } catch (e) {
+            console.error(e)
+        }
         setWord('')
     }
     return (
